@@ -1,0 +1,48 @@
+package compiler;
+
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
+public class Error
+{
+	
+	public static void error(int flag)
+	{
+		
+		String e = "ERROR OCCURRED!";
+		
+		if(flag == -3)
+			e = "UNEXPECTED TOKEN!";
+		
+		if(flag == -2)
+			e = "IDENTIFIER UNDECLARED!";
+		
+		if(flag == -1)
+			e = "[ OR ] EXPECTED!";
+		
+		if(flag > 0)
+			e = "Error At Character: " + flag;
+		
+		if(Frame.mode == 0)
+		{
+			
+			UIManager.put("OptionPane.background", Color.white);
+			UIManager.put("Panel.background", Color.white);
+			
+		}
+		
+		if(Frame.mode == 1)
+		{
+			
+			UIManager.put("OptionPane.background", Color.black);
+			UIManager.put("Panel.background", Color.black);
+			e = "<html><font color=#FFFFFF>" + e + "</font>";
+			
+		}
+		
+		JOptionPane.showMessageDialog(null, e, "Panic Mode!", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+	
+}
